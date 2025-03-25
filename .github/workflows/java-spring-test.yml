@@ -35,6 +35,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
+    - name: make application.yml
+      run: |
+        mkdir -p ./src/main/resources
+	cd ./src/main/resources
+	touch application.yml
+	echo "${{ secrets.APPLICATION }}" > ./application.yml
     - name: Build With Gradle
       run: ./gradlew build
 
