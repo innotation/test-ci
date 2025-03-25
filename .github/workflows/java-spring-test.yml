@@ -37,10 +37,8 @@ jobs:
         distribution: 'adopt'
     - name: make application.yml
       run: |
-        mkdir -p ./src/main/resources
-	cd ./src/main/resources
-	touch application.yml
-	echo "${{ secrets.APPLICATION }}" > ./application.yml
+        mkdir -p ./src/main/resources && \
+        echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.yml
     - name: Build With Gradle
       run: ./gradlew build
 
